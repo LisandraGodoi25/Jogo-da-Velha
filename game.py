@@ -22,8 +22,9 @@ choices = [1,2,3,4,5,6,7,8,9]
 
 endgame = 0
 
-
+stalemate = 1
 def winner():
+    global stalemate
     global endgame
     #print("Será que alguém venceu???")
     for indicelin, col in enumerate(win):          # i = índice da linha, row = a linha (ex: [1,2,3])
@@ -31,8 +32,8 @@ def winner():
         if win[indicelin][0] == win[indicelin][1] == win[indicelin][2]:
             print("WINNER!!! The winner is:", win[indicelin][0])
             endgame = 1
-"""        else:
-            print("LOSER")"""
+        
+    stalemate += 1
 
 
 
@@ -167,11 +168,17 @@ while True:
     #print("endgame", endgame)
     if endgame == 1:
         break
+    elif stalemate == 9:
+        print("STALEMATE, NO ONE WINS")
+        break
 
     myturn()
     winner()
     sleep(2)
     #print("endgame", endgame)
     if endgame == 1:
+        break
+    elif stalemate == 9:
+        print("STALEMATE, NO ONE WINS")
         break
 print("END GAME \n THANK YOU FOR PLAYING")
